@@ -1,12 +1,24 @@
-var msg = document.getElementById("msg")
-var btn_gerar = document.getElementById("btn-gerar")
-var cont_QrCode = document.getElementById("conteudo-qrcode")
+const container = document.querySelector(".container"),
+msg = container.querySelector("#msg"),
+btn_gerar = container.querySelector("#btn-gerar"),
+cont_QrCode = container.querySelector("#conteudo-qrcode")
 
 btn_gerar.addEventListener("click", ()=>{
 	let msg_qr = msg.value;
 	if(!msg_qr) {
-		alert("Digite uma mensagem")
-	} else {
-		cont_QrCode.src = `https://api.qrserver.com/v1/create-qr-code/?data=${msg_qr}`
+		alert("Insira uma URL ou texto para gerar um Qr Code");
+		return;
 	}
-})
+	btn_gerar.innerText = "Gerando um Qr Code..."
+	cont_QrCode.src = `https://api.qrserver.com/v1/create-qr-code/?data=${msg_qr}`
+	cont_QrCode.addEventListener("load", ()=>{
+		btn_gerar.innerText = "Gerar Qr Code"
+		container.classList.add("active")
+	})
+});
+
+msg.addEventListener('keyup', () => {
+    if(!msg.value){
+        container.classList.remove('active');
+    };
+});

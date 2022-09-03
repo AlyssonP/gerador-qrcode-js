@@ -10,18 +10,20 @@
     </head>
     <body>
         <div class="container">
-            <h1>Gerador QR Code</h1>
+            <header>
+                <h1>Gerador QR Code</h1>
+                <p>Digite uma url ou texto para gerar um qr code.</p>
+            </header>
 
-            <form class="form">
+            <div class="form">
                 <input type="text" name="msg" id="msg" placeholder="Digite uma mensagem" required>
                 <input type="button" id="btn-gerar" value="Gerar QR Code">
-            </form>
+            </div>
 
             <div class="qr-code">
                 <img class="conteudo-qrcode" id="conteudo-qrcode" src="img/qrcode-start.png">
             </div>
         </div>
-        <script type="text/javascript" src="qrcode.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
     </body>
 </html>
